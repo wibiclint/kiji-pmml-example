@@ -1,0 +1,23 @@
+/** Avro record corresponding to R "iris" dataset. */
+
+@namespace("org.kiji.pmml")
+/** Example avro protocol. */
+protocol MyRecords {
+  record IrisData {
+    double sepal_length; // This is what we predict!
+    double sepal_width;
+    double petal_length;
+    double petal_width;
+    string species;
+    long id;
+  }
+
+  record IrisResult {
+    double sepal_length;
+  }
+
+  /** Example record. */
+  record ExampleRecord {
+    string id;
+  }
+}
