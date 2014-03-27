@@ -1,0 +1,56 @@
+
+R version 3.0.2 (2013-09-25) -- "Frisbee Sailing"
+Copyright (C) 2013 The R Foundation for Statistical Computing
+Platform: x86_64-apple-darwin10.8.0 (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+[Previously saved workspace restored]
+
+> library("kernlab")
+> library("nnet")
+> library("pmml")
+Loading required package: XML
+> library("randomForest")
+randomForest 4.6-7
+Type rfNews() to see new features/changes/bug fixes.
+> 
+> readCsv <- function(file){
++ 	return (read.csv(file = file, header = TRUE))
++ }
+> 
+> writeCsv <- function(data, file){
++ 	write.table(data, file = file, sep = ",", quote = FALSE, row.names = FALSE, col.names = TRUE)
++ }
+> 
+> writeOzone = function(values, file){
++ 	result = data.frame(values)
++ 	names(result) = c("O3")
++ 
++ 	writeCsv(result, file)
++ }
+> 
+> 
+> ozoneData <- readCsv("Ozone.csv")
+> ozoneFormula <- formula(O3 ~ temp + ibh + ibt)
+> 
+> lm <- lm(ozoneFormula, ozoneData)
+> saveXML(pmml(lm, model.name='artifact.ozone_model'), "../work/RegressionOzone.pmml")
+[1] "../work/RegressionOzone.pmml"
+> writeOzone(predict(lm), "../work/RegressionOzone.csv")
+> 
+> proc.time()
+   user  system elapsed 
+  1.235   0.048   1.333 

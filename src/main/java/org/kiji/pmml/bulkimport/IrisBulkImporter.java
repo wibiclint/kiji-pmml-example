@@ -26,7 +26,7 @@ import org.apache.hadoop.io.Text;
 
 import org.kiji.mapreduce.KijiTableContext;
 import org.kiji.mapreduce.bulkimport.KijiBulkImporter;
-import org.kiji.pmml.IrisData;
+//import org.kiji.pmml.IrisData;
 import org.kiji.schema.EntityId;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -38,6 +38,7 @@ import org.slf4j.LoggerFactory;
  * Id, sepal length, sepal width, petal length, petal width, species.
  *
  */
+/*
 public class IrisBulkImporter extends KijiBulkImporter<LongWritable, Text> {
   private static final Logger LOG =
       LoggerFactory.getLogger(KijiBulkImporter.class);
@@ -49,14 +50,12 @@ public class IrisBulkImporter extends KijiBulkImporter<LongWritable, Text> {
   final static int FIELD_PETAL_WIDTH = 4;
   final static int FIELD_SPECIES = 5;
 
-  /** {@inheritDoc} */
   @Override
   public void setup(KijiTableContext context) throws IOException {
     // TODO: Perform any setup you need here.
     super.setup(context);
   }
 
-  /** {@inheritDoc} */
   @Override
   public void produce(LongWritable filePos, Text value, KijiTableContext context)
       throws IOException {
@@ -92,10 +91,10 @@ public class IrisBulkImporter extends KijiBulkImporter<LongWritable, Text> {
     context.put(eid, "info", "flower_data", irisData);
   }
 
-  /** {@inheritDoc} */
   @Override
   public void cleanup(KijiTableContext context) throws IOException {
     // TODO: Perform any cleanup you need here.
     super.cleanup(context);
   }
 }
+*/
